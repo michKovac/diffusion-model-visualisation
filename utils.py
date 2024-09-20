@@ -92,7 +92,7 @@ def plot_hist(t_sample, axes, image_index, image):
     axes[image_index].plot(hist, color='black')
     axes[image_index].set_xlim([0, 255])
     axes[image_index].set_ylim([0, max(hist) * 1.1])
-    axes[image_index].set_title(f'$x_{{{t_sample[image_index]-1}}}$', fontsize=16)
+    axes[image_index].set_title(f'$x_{{{t_sample[image_index]+1}}}$', fontsize=16)
     axes[image_index].set_yticks = ([0, hist.max()/2, hist.max()])
     axes[image_index].set_xtickslabels = ([0, 255/2,255])
 
