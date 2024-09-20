@@ -3,6 +3,7 @@ from torchvision.transforms import Compose, ToTensor, CenterCrop, Resize, Normal
 import torch
 from PIL import Image
 from utils import show_noisy_images
+import numpy as np
 
 # Load the image
 image = Image.open('retinal_image_2_1.jpg')
@@ -25,7 +26,7 @@ diffusion = GaussianDiffusion(beta_scheduler='linear')
 # diffusion = GaussianDiffusion(beta_scheduler='sigmoid', schedule_fn_kwargs={'start': 0.01, 'end': 5, 'tau': 3})
 
 # Define the timesteps to sample
-t_sample = [0, 10, 20, 50, 100, 200, 300, 400, 999]
+t_sample = [0, 19, 49, 99, 499, 999]
 
 # Generate and display noisy images at different timesteps
 show_noisy_images([[diffusion.get_noisy_image(x0, torch.tensor([t])) for t in t_sample]], t_sample)

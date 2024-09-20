@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import numpy
 import cv2
 
+
+
 def show_noisy_images(noisy_images, t_sample, figure_scale_factor=4):
     """
     Displays and saves a composite image and histograms of noisy images at different timesteps.
@@ -19,6 +21,9 @@ def show_noisy_images(noisy_images, t_sample, figure_scale_factor=4):
     num_of_image_sets = len(noisy_images)
     num_of_images_in_set = len(noisy_images[0])
     image_size = noisy_images[0][0].size[0]
+
+    params = {'mathtext.default': 'regular' }          
+    plt.rcParams.update(params)
 
     # Create a new blank image to hold the composite of all noisy images
     full_image = Image.new('RGB', (image_size * num_of_images_in_set + (num_of_images_in_set - 1), image_size * num_of_image_sets + (num_of_image_sets - 1)))
@@ -87,7 +92,7 @@ def plot_hist(t_sample, axes, image_index, image):
     axes[image_index].plot(hist, color='black')
     axes[image_index].set_xlim([0, 255])
     axes[image_index].set_ylim([0, max(hist) * 1.1])
-    axes[image_index].set_title(f'x {t_sample[image_index]+1}')
+    axes[image_index].set_title(f'$x_{{{t_sample[image_index]-1}}}$', fontsize=16)
     axes[image_index].set_yticks = ([0, hist.max()/2, hist.max()])
     axes[image_index].set_xtickslabels = ([0, 255/2,255])
 
